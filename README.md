@@ -1,25 +1,21 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                   | Type   | Options     |
+| ------------------------ | ------ | ----------- |
+| id                       | string | null: false |
+| nickname                 | string | null: false |
+| email                    | string | null: false |
+| password                 | string | null: false |
+| password_confirmation    | string | null: false |
 
-* Ruby version
+## furimas テーブル
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+| Column     | Type   | Options     |
+| ---------- | ------ | ----------- |
+| name       | string | null: false |
+| image      | string | null: false |
+| price      | string | null: false |
+| saler      | string | null: false |
+| buyer      | string | null: false |
