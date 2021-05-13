@@ -70,3 +70,4 @@
 ### Association
 
 - has_one :furima
+- has_one :purchase_history
