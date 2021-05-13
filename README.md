@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :furimas
-- has_many :purchase_historys
+- has_many :purchase_histories
 
 
 
@@ -37,7 +37,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :purchase_history
+- has_one :purchase_history
 
 
 
@@ -52,17 +52,17 @@
 
 - belongs_to :furima
 - belongs_to :user
-- has_many :address
+- has_one :address
 
 
 ## address テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| postal_code      | integer    | null: false                    |
+| postal_code      | string     | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | municipalities   | string     | null: false                    |
-| house number     | string     | null: false                    |
+| house_number     | string     | null: false                    |
 | building         | string     |                                |
 | telephone_number | string     | null: false                    |
 | purchase_history | references | null: false, foreign_key: true |
