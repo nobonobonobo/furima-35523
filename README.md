@@ -16,28 +16,28 @@
 ### Association
 
 - has_many :furimas
+- has_many :purchase_historys
 
 
 
 ## furimas テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| name          | string     | null: false                    |
-| price         | integer    | null: false                    |
-| description   | text       | null: false                    |
-| category      | integer    | null: false                    |
-| prefecture    | integer    | null: false                    |
-| condition     | integer    | null: false                    |
-| shipping_date | integer    | null: false                    |
-| postage       | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| price            | integer    | null: false                    |
+| description      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| shipping_date_id | integer    | null: false                    |
+| postage_id       | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :purchase_history
-- has_one :address
 
 
 
@@ -52,6 +52,7 @@
 
 - belongs_to :furima
 - belongs_to :user
+- has_many :address
 
 
 ## address テーブル
@@ -59,7 +60,7 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | postal_code      | integer    | null: false                    |
-| prefecture       | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | municipalities   | string     | null: false                    |
 | house number     | string     | null: false                    |
 | building         | string     |                                |
