@@ -69,4 +69,4 @@
 
 ### Association
 
-- has_one :purchase_history
+- belongs_to :purchase_history
