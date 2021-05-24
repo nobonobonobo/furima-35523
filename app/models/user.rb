@@ -9,8 +9,8 @@ class User < ApplicationRecord
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/} do
   validates :family_name, :first_name
   end
-  with_options presence: true, format: { with: /\A[ァ-ヶ]+\z/} do
+  with_options presence: true, format: { with: /\A[ァ-ヶー]+\z/} do
   validates :family_name_ruby, :first_name_ruby
   end
-  validates :nickname, :birthday
+  validates :nickname, :birthday, presence: true
 end

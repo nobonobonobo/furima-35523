@@ -8,32 +8,34 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '保存できる場合' do
-      it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
+      it 'すべての項目が入力されていれば登録できる' do
         expect(@user).to be_valid
-      end
-      it 'passwordとpassword_confirmationが6文字以上であれば登録できる' do
-        @user.password = '000000'
-        @user.password_confirmation = '000000'
-        expect(@user).to be_valid
-      end
-      it 'passwordは、半角英数字が混合されていれば登録できる' do
-        @user.password = "000000", "aaaaaa", "ａａａａａａ"
-        @user.valid?
-        expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password", "Password is too short (minimum is 6 characters)"
-      end
-      it 'nameは、名字と名前があり、全角（漢字・ひらがな・カタカナ）で入力されていれば登録できる' do
-        @user.family_name = "kana"
-        @user.first_name = "kana"
-        @user.valid?
-      end
-      it 'name_rubyは、名字と名前があり、全角（漢字・ひらがな・カタカナ）で入力されていれば登録できる' do
-        @user.family_name_ruby = "kana"
-        @user.first_name_ruby = "kana"
-        @user.valid?
       end
     end
 
     context '保存できない場合' do
+      it 'passwordとpassword_confirmationが6文字以上でないと登録できない' do
+        @user.password = '000000'
+        @user.password_confirmation = '000000'
+        expect(@user.errors.full_messages).to include
+      end
+      it 'passwordは、半角英数字が混合されていないと登録できない' do
+        @user.password = "abc123"
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
+      end
+      it 'nameは、名字と名前があり、全角（漢字・ひらがな・カタカナ）で入力されていないと登録できない' do
+        @user.family_name = "kana"
+        @user.first_name = "kana"
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Family name is invalid", "First name is invalid"
+      end
+      it 'name_rubyは、名字と名前があり、全角（漢字・ひらがな・カタカナ）で入力されていないと登録できない' do
+        @user.family_name_ruby = "kana"
+        @user.first_name_ruby = "kana"
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Family name ruby is invalid", "First name ruby is invalid"
+      end
       it 'nicknameが空では登録できない' do
         @user.nickname = ""
         @user.valid?
