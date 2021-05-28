@@ -1,4 +1,4 @@
-class Condition < ActiveHash::Base
+class ShippingDate < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '１〜２日で発送' },
@@ -9,4 +9,4 @@ class Condition < ActiveHash::Base
 
     include ActiveHash::Associations
     has_many :furimas
-  end
+end

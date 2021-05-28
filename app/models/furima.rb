@@ -11,5 +11,5 @@ class Furima < ApplicationRecord
 
   validates :name, :price, :description, :category, :condition, :postage, :prefecture, :shipping_date, presence: true
 
-  validates :genre_id, numericality: { other_than: 1 }
+  validates :category_id, :prefecture_id, :condition_id, :shipping_date_id, :postage_id, numericality: { other_than: 1 }
 end
