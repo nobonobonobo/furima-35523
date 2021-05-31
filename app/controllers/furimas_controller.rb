@@ -1,5 +1,5 @@
 class FurimasController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :show]
   
 
   def index
@@ -17,6 +17,10 @@ class FurimasController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @furima = Furima.find(params[:id])
   end
 
   private
